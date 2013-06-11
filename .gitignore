@@ -1,5 +1,8 @@
 ada/
 javaDoc/
 nonsense/
+os/
+osExtra/
+osTest/
 *.class
 *.bat
