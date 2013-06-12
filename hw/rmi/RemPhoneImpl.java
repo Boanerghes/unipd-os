@@ -88,6 +88,4 @@ public class RemPhoneImpl extends UnicastRemoteObject implements RemPhoneBook
 			e.printStackTrace();
 		}
 	}
-
-	
 }

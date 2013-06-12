@@ -1,0 +1,8 @@
+1034792 - Michele Palmia
+Homework 4 - Maggio 2013
+
+Prova scritta 07/09/2004 - es. B
+
+Il file Stretto.java definisce l'interfaccia richiesta nel testo del compito, che comprende i metodi entraAB, entraBA, esceAB ed esceBA. Tale classe, definita come astratta, presenta anche tutte le variabili necessarie a definire lo stato del sistema in un dato istante nel tempo: quante barche stanno attraversando lo stretto, quante l'hanno gia' attraversato nel senso unico corrente, qual'e' il lato del senso unico alternato, eccetera. Un enum definisce le direzioni, e uno stato N per la direzione non specificata.
+
+Il file StrettoAda definisce la soluzione in ADA standard, mentre StrettoRzv.java presenta la traduzione in ADA-Java. Non sono presenti come commenti le corrispondenti entri nel linguaggio macro per ragioni di spazio. Barca.java e StrettoLauncher.java completano il lavoro, creando un ambiente completo per il test del funzionamento della classe creata.

@@ -1,0 +1,15 @@
+1034792 - Michele Palmia
+Homework 4 - Maggio 2013
+
+I semplici test descritti nel testo dell'homework hanno reso evidente che nel caso si chiamassero diversi metodi RMI dalla stessa VM i processi sul lato server non erano moltiplicati. Nel caso si utilizzassero diverse VM, i processi crescevano in numero proporzionalmente.
+
+In effetti, le specifiche di RMI documentano chiaramente questo comportamento, come e' possibile leggere nel passaggio riportato sotto.
+
+A method dispatched by the RMI runtime to a remote object implementation (a server) may or may not execute in a separate thread. Some calls originating from the same client virtual machine will execute in the same thread; some will execute in different threads. Calls originating from different client virtual machines will execute in different threads. Other than this last case of different client virtual machines, the RMI runtime makes no guarantees with respect to mapping remote object invocations to threads.
+
+Da http://www.cis.upenn.edu/~bcpierce/courses/629/jdkdocs/guide/rmi/spec/rmi-arch.doc.html
+consultato in data 25/06/2013
+
+Si e' quindi supposto, nello sviluppo della seconda parte dell'homework, che le chiamate ai diversi metodi avvenissero da VM differenti, in modo da garantire che i thread di esecuzione fossero appunto differenti.
+
+La soluzione proposta e' quella per l'elenco telefonico (punto a). L'implementazione per la maggioranza dei metodi sarebbe analoga a quella con un randez-vous esteso in stile ADA, mentre e' evidente come il metodo waitFor potrebbe fare utilizzo di un sistema di sincronizzazione molto piu' semplice evitando l'uso di semafori privati. Una volta fatto l'accept del metodo, il client si potrebbe sospendere in attesa che il termine cercato venisse inserito, mentre il server dovrebbe solo inserire la nuova entry senza la preoccupazione di dover notificare la cosa. Sarebbe interessante studiare piu' in dettaglio se questa ultima proposta di implementazione, in stile ADA, sia effettivamente meno efficiente a causa del piu' intenso busy waiting.

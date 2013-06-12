@@ -17,16 +17,18 @@ public class StrettoRzv extends Stretto implements Runnable {
 	public void run() {
 		ADAThread.Select request = tc.new Select();
 
-		//***** Soluzione del problema per "componenti" 
+		
 		Entry entraAB  = new Entry(){ 
 			public Object exec(Object inp) {
 				passing++;
 				
 				if ((tc.entryCount("entraAB") == 0 && tc.entryCount("entraBA") != 0) || tc.entryCount("entraBA") == 1) {
+					// la situazione prevede di cambiare lato
 					side = Side.B;
 					sCounter = 0;
 				}
 				else {
+					// setting per il senso unico alternato
 					if (side.equals(Side.N)){
 						side = Side.A; sCounter = 1;
 					}
@@ -52,10 +54,12 @@ public class StrettoRzv extends Stretto implements Runnable {
 				passing++;
 				
 				if ((tc.entryCount("entraBA") == 0 && tc.entryCount("entraAB") != 0) || tc.entryCount("entraAB") == 1) {
+					// cambio lato senza senso unico alternato
 					side = Side.A;
 					sCounter = 0;
 				}
 				else {
+					// imposto il senso unico alternato
 					if (side.equals(Side.N)){
 						side = Side.B; 
 						sCounter = 1;
@@ -81,7 +85,9 @@ public class StrettoRzv extends Stretto implements Runnable {
 		Entry esceAB = new Entry(){
 			public Object exec(Object inp) {
 				totBarche++;  passing--;
-				if (tc.entryCount("entraAB") == 0 || tc.entryCount("entraBA") == 0){ side = Side.N; sCounter = 0;} 
+				if (tc.entryCount("entraAB") == 0 || tc.entryCount("entraBA") == 0){
+					// se non ci sono barche, reimposto tutto a 0
+					side = Side.N; sCounter = 0;} 
 				return null; 
 			}
 		};
