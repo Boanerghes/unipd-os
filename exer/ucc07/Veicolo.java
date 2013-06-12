@@ -35,7 +35,7 @@ public class Veicolo extends Thread{
     {
         final int MAXVEICOLI = 10;
         
-        RotatoriaMJ rt = new RotatoriaMJ();
+        Rotatoria rt = new RotatoriaMH();
         for (int i=1; i<= MAXVEICOLI; i++)
         {
             Veicolo v = new Veicolo(rt, i, Util.randVal(0, 3));
