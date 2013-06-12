@@ -11,9 +11,6 @@ import os.ada.*;
   * @author G.Clemente DEI UNIPD
   */
 public class AirportRzv {
-
-  public AirportRzv () {
-  } //[c]
   
   private class Pilot extends ADAThread{
     protected int id;
